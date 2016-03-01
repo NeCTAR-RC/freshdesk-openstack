@@ -1,3 +1,4 @@
+"use strict";
 /**
  * Session Configuration
  * (sails.config.session)
@@ -21,7 +22,7 @@ module.exports.session = {
   * of your users, forcing them to log in again.                             *
   *                                                                          *
   ***************************************************************************/
-  secret: '2b11cf48a98db243e479e62cb2cc0c2c',
+  secret: "2b11cf48a98db243e479e62cb2cc0c2c",
 
 
   /***************************************************************************

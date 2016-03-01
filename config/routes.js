@@ -1,3 +1,4 @@
+"use strict";
 /**
  * Route Mappings
  * (sails.config.routes)
@@ -32,8 +33,8 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'homepage'
+  "/": {
+    view: "homepage"
   },
 
   /***************************************************************************
@@ -45,8 +46,8 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
-  'post /osid/api/1.0.0/instance/addInfo' : {
-    controller: 'InstanceController',
-    action: 'addInfo'
+  "post /osid/api/1.0.0/instance/addInfo": {
+    controller: "InstanceController",
+    action: "addInfo"
   }
 };

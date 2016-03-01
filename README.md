@@ -30,12 +30,12 @@ A 'Dispatchr' with:
   - Requires Authentication (API Key): the value that translates to the base64 field value 'authorization' found at 'puppet-freshdesk/osid-config/*environment*.js'. See puppet-freshdesk for more information.
   - Encoding: JSON
   - Content - Select 'Advanced' and enter the ff.: 
-  ```
-  {
-    "srcText": "{{ticket.description}}",
-    "ticketId": {{ticket.id}}
-  }
-  ```
+```
+{
+  "srcText": "{{ticket.description}}",
+  "ticketId": {{ticket.id}}
+}
+```
 
 A 'Observer' with:
 
@@ -47,13 +47,12 @@ A 'Observer' with:
   - Requires Authentication (API Key): the value that translates to the base64 field value 'authorization' found at 'puppet-freshdesk/osid-config/*environment*.js'. See puppet-freshdesk for more information.
   - Encoding: JSON
   - Content: 
-  ```
-  {
-    "srcText": "{{ticket.latest_public_comment}}",
-    "ticketId": {{ticket.id}}
-  }
-  ```
-  
+```
+{
+  "srcText": "{{ticket.latest_public_comment}}",
+  "ticketId": {{ticket.id}}
+}
+```
 See Freshdesk documentation for more information on how to add the above 'Helpdesk Productivity' components.
 
 
@@ -70,3 +69,6 @@ Configuration: /opt/freshdesk-osid/config/env/*environment*.js
 Log file: /var/log/freshdesk/osid.log
 Logrotate config: /etc/logrotate.d/freshdesk
 
+## Linting and Testing
+
+To set up and execute test suite: `npm install && npm test`. You may drop the `npm install` command to just execute the test.

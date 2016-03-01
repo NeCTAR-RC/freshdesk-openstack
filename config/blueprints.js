@@ -1,3 +1,4 @@
+"use strict";
 /**
  * Blueprint API Configuration
  * (sails.config.blueprints)

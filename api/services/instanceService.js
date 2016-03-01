@@ -1,3 +1,4 @@
+"use strict";
 /**
  * Instance controller
  *
@@ -5,7 +6,7 @@
  * @author      :: <a href='https://github.com/shilob/'>Shilo Banihit</a>
  */
 module.exports = {
-  
+
   /**
   *
   * Returns the instance IDs of IP addresses from source text
@@ -17,8 +18,8 @@ module.exports = {
     var instanceIds = [];
     if (instanceIdsSource != null) {
       instanceIdsSource = instanceIdsSource.unique();
-      for (var x=0; x<instanceIdsSource.length; x++) {
-        instanceIds.push({instanceId: instanceIdsSource[x], key:'instanceId'});
+      for (var x = 0; x < instanceIdsSource.length; x++) {
+        instanceIds.push({instanceId: instanceIdsSource[x], key: "instanceId"});
       }
     }
     var instanceCnt = 0; // we are using an instance count instead comparing the ips and instanceids since the ip may not match
@@ -31,32 +32,34 @@ module.exports = {
     if (ips == null) {
       return cb(instanceIds);
     }
-    var cbExit = function(ip) { return function(error, stdout, stderr) {
-      if (error) {
-        sails.log.error("Error getting instance information");
-        sails.log.error(error);
-      } else {
-        var outputJson = JSON.parse(stdout);
-        for (var i=0; i<outputJson.length; i++) {
-          var isMatch = outputJson[i][sails.config.ipField].indexOf(ip) != -1;
-          if (isMatch) {
-            instanceIds.push({instanceId:outputJson[i][sails.config.idField], key:ip});
+    var cbExit = function(ip) {
+      return function(error, stdout) {
+        if (error) {
+          sails.log.error("Error getting instance information");
+          sails.log.error(error);
+        } else {
+          var outputJson = JSON.parse(stdout);
+          for (var j = 0; j < outputJson.length; j++) {
+            var isMatch = outputJson[j][sails.config.ipField].indexOf(ip) !== -1;
+            if (isMatch) {
+              instanceIds.push({instanceId: outputJson[j][sails.config.idField], key: ip});
+            }
           }
+          trackingCb();
         }
-        trackingCb();
-      }
-    }};
-    
+      };
+    };
+
     // remove duplicate IP addresses
     ips = ips.unique();
-    for (var i=0; i<ips.length; i++) {
-      cmdService.runCmd('getInstanceList', [{fieldRegex:/<ipAddress>/g, fieldValue:ips[i]}], cbExit(ips[i]));
+    for (var i = 0; i < ips.length; i++) {
+      cmdService.runCmd("getInstanceList", [{fieldRegex: /<ipAddress>/g, fieldValue: ips[i]}], cbExit(ips[i]));
     }
   },
-  
+
   /**
   *
-  * 
+  *
   *
   */
   getInstanceInfo: function(instanceInfo, stripTableOutput, cb) {
@@ -65,10 +68,10 @@ module.exports = {
       data.err = stderr;
       if (error) {
         data.error = error;
-      } 
-      data.out = "Key used for extraction:" + (instanceInfo.key == 'instanceId' ? instanceInfo.instanceId : instanceInfo.key ) + "\n\n" + stdout;
+      }
+      data.out = "Key used for extraction:" + (instanceInfo.key === "instanceId" ? instanceInfo.instanceId : instanceInfo.key ) + "\n\n" + stdout;
       cb(data);
     };
-    cmdService.runCmd('showInstanceInfo', [{fieldRegex:/<instanceId>/g, fieldValue:instanceInfo.instanceId}],cbExit);
+    cmdService.runCmd("showInstanceInfo", [{fieldRegex: /<instanceId>/g, fieldValue: instanceInfo.instanceId}], cbExit);
   }
 };

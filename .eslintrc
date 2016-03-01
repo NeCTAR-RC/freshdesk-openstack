@@ -1,0 +1,17 @@
+---
+extends:
+  - "defaults/rules/eslint/best-practices/node-runtime"
+env:
+  node: true
+  
+rules:
+  "no-underscore-dangle": 0
+  "comma-dangle": 0
+  "camelcase": 0
+  "no-extend-native": 0
+  
+globals:
+  "sails": true
+  "instanceService": true
+  "freshdeskService": true
+  "cmdService": true
