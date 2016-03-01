@@ -1,3 +1,4 @@
+"use strict";
 /**
  * Api Key Auth
  *
@@ -8,7 +9,7 @@
  */
 module.exports = function(req, res, next) {
 
-  // User is allowed, proceed to the next policy, 
+  // User is allowed, proceed to the next policy,
   // or if this is the last policy, the controller
 //  sails.log.debug("---- Headers ------");
 //  sails.log.debug(req.headers);
@@ -17,7 +18,7 @@ module.exports = function(req, res, next) {
 //  sails.log.debug("====== Body =========");
 //  sails.log.debug(req.body);
   var auth = req.headers.authorization;
-  if (auth == sails.config.authorization) {
+  if (auth === sails.config.authorization) {
 //    sails.log.debug('Has Valid Authorization');
     return next();
   }

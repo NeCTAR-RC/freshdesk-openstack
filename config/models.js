@@ -1,3 +1,4 @@
+"use strict";
 /**
  * Default model configuration
  * (sails.config.models)

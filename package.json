@@ -32,7 +32,7 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://bitbucket.org/qcifltd/freshdesk-osid.git"
+    "url": "https://github.com/NeCTAR-RC/freshdesk-openstack.git"
   },
   "author": {
     "name": "Shilo Banihit",
@@ -41,8 +41,11 @@
   "license": "",
   "devDependencies": {
     "dot": "^1.0.3",
-    "mocha": "^2.3.0",
+    "mocha": "^2.4.5",
     "should": "^7.1.0",
-    "supertest": "^1.1.0"
+    "supertest": "^1.1.0",
+    "eslint": "^0.18.0",
+    "eslint-config-defaults": "^9.0.0",
+    "chalk": "^1.0.0"
   }
 }
