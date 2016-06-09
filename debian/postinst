@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+set -e
+
+if [ "$1" = "configure" ]; then
+
+    adduser --system --quiet --home / --no-create-home \
+        --shell /bin/false --group freshdesk
+    #freshdesk need to write to these locations
+    chown freshdesk opt/nectar/freshdesk-osid/.tmp
+    chown freshdesk opt/nectar/freshdesk-pip/views/layout.ejs
+
+fi
+
+#DEBHELPER#
+
+exit 0

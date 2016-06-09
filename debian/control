@@ -1,0 +1,13 @@
+Source: freshdesk-osid
+Maintainer: Andrew Spiers <andrew@andrewspiers.net>
+Section: misc
+Priority: optional
+Standards-Version: 3.9.2
+Build-Depends: debhelper (>= 9), dh-systemd, npm, nodejs-legacy, build-essential, ca-certificates, libkrb5-dev
+
+Package: freshdesk-osid
+Architecture: any
+Depends: ${misc:Depends}, nodejs, nodejs-legacy, python-openstackclient
+Description: Freshdesk Authentication proxy for AAF.
+ Provides authentication integration between Freshdesk and Australian Access Federation using AAF Rapid Connect.
+ Authorization happens at Freshdesk.

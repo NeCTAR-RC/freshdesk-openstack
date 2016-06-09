@@ -1,0 +1,12 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+override_dh_auto_build:
+	npm --cache /tmp/npmcache install
+	dh_auto_build
+
+override_dh_auto_test:
+	npm --cache /tmp/npmcache test
+
+%:
+	dh $@

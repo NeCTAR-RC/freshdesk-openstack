@@ -1,0 +1,16 @@
+[Unit]
+Description=Freshdesk Openstack Instance Data Provider
+
+[Service]
+ExecStart=/usr/bin/nodejs /opt/nectar/freshdesk-osid/app.js
+Restart=always
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=freshdesk-osid
+User=freshdesk
+Environment=NODE_ENV=production
+WorkingDirectory=/opt/nectar/freshdesk-osid
+
+[Install]
+WantedBy=multi-user.target
