@@ -7,7 +7,7 @@ if [ "$1" = "configure" ]; then
         --shell /bin/false --group freshdesk
     #freshdesk need to write to these locations
     chown freshdesk opt/nectar/freshdesk-osid/.tmp
-    chown freshdesk opt/nectar/freshdesk-pip/views/layout.ejs
+    chown freshdesk opt/nectar/freshdesk-osid/views/layout.ejs
 
 fi
 
