@@ -57,7 +57,9 @@ module.exports = {
               sails.log.error("Error for instance:" + instanceData[j].error);
             }
           }
-          addNote();
+          if ( blob != "") {
+            addNote();
+          }
         }
       };
       for (var i = 0; i < instanceIds.length; i++) {
